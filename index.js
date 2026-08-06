@@ -25,6 +25,17 @@ let posts = [
     }
 ];
 
+app.get("/posts/new",(req,res)=>{
+    res.render("new.ejs");
+});
+
+app.post("/posts",(req,res)=>{
+    let {username,content}=(req.body);
+    posts.push({username,content});
+
+    res.send("post request working");
+})
+
 app.get("/posts",(req,res)=>{
     res.render("index.ejs",{posts});
 });
